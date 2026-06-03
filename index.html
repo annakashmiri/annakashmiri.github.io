@@ -252,7 +252,7 @@
 
  /* ABOUT */
  .about { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
- .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+ .about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
  .about-text p { color: rgba(255,248,240,0.7); line-height: 1.8; font-weight: 300; font-size: 1.05rem; margin-bottom: 1rem; }
  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
  .stat-card {
@@ -276,7 +276,7 @@
 
  /* PROJECTS */
  .projects { max-width: 1100px; margin: 0 auto; }
- .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+ .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 3rem; }
 
  .project-card {
  background: rgba(255,255,255,0.03);
@@ -320,7 +320,7 @@
  /* EXPERIENCE */
  .experience { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); }
  .exp-inner { max-width: 1100px; margin: 0 auto; }
- .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+ .exp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 3rem; }
  .exp-card {
  background: rgba(255,255,255,0.03);
  border: 1px solid rgba(255,255,255,0.07);
@@ -337,7 +337,7 @@
 
  /* SKILLS */
  .skills-inner { max-width: 1100px; margin: 0 auto; }
- .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 3rem; }
+ .skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3rem; }
  .skill-group {
  background: rgba(255,255,255,0.03);
  border: 1px solid rgba(255,255,255,0.07);
@@ -360,7 +360,7 @@
  /* CERTIFICATIONS */
  .certs { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); }
  .certs-inner { max-width: 1100px; margin: 0 auto; }
- .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+ .certs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3rem; }
  .cert-card {
  background: rgba(255,255,255,0.03);
  border: 1px solid rgba(255,255,255,0.07);
@@ -410,6 +410,74 @@
  /* Scroll reveal */
  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+ /* RESPONSIVE FIXES */
+ @media (max-width: 900px) {
+ nav {
+ padding: 1rem 1.5rem;
+ }
+ .nav-links {
+ gap: 1rem;
+ }
+ .about-grid,
+ .exp-grid {
+ grid-template-columns: 1fr;
+ gap: 2rem;
+ }
+ .projects-grid,
+ .certs-grid {
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+ .skills-grid {
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+ section,
+ #projects,
+ #skills {
+ padding: 5rem 1.5rem;
+ }
+ .hero {
+ padding: 7rem 1.5rem 4rem;
+ }
+ }
+
+ @media (max-width: 600px) {
+ body {
+ cursor: auto;
+ }
+ .cursor,
+ .cursor-trail {
+ display: none;
+ }
+ nav {
+ flex-direction: column;
+ gap: 0.8rem;
+ }
+ .nav-links {
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 0.8rem 1rem;
+ }
+ .projects-grid,
+ .skills-grid,
+ .certs-grid,
+ .about-stats {
+ grid-template-columns: 1fr;
+ }
+ .hero-cta,
+ .contact-links {
+ flex-direction: column;
+ align-items: flex-start;
+ }
+ .contact-links {
+ align-items: center;
+ }
+ .exp-header {
+ flex-direction: column;
+ gap: 0.5rem;
+ }
+ }
+
 </style>
 </head>
 <body>
@@ -516,7 +584,9 @@
  <span class="project-tag">Scikit-learn</span>
  <span class="project-tag">NLTK</span>
  <span class="project-tag">TF-IDF</span>
-</div>
+ </div>
+ </div>
+
  <div class="project-card">
  <div class="project-icon" style="background:rgba(255,139,171,0.15);"></div>
  <h3>Real-Time Emotion Detector</h3>
@@ -526,9 +596,8 @@
  <span class="project-tag">TensorFlow</span>
  <span class="project-tag">OpenCV</span>
  <span class="project-tag">Keras</span>
-</div>
-</div>
-</div>
+ </div>
+ </div>
  <div class="project-card">
  <div class="project-icon" style="background:rgba(108,99,255,0.15);"></div>
  <h3>Handwritten Character CNN</h3>
